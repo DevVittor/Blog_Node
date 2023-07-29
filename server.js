@@ -3,6 +3,14 @@ const app = express();
 const bodyParser = require("body-parser");
 const conn = require("./db/conn");
 
+//Habilitar o uso de Favicon
+const favicon = require("serve-favicon");
+const path = require("path");
+//Migrations
+const categoryController = require("./controllers/categoryController");
+const indexController = require("./controllers/indexController");
+const error404Controller = require("./controllers/error404Controller");
+
 conn
   .authenticate()
   .then(() => {
@@ -17,12 +25,19 @@ conn
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
+app.use(favicon(path.join(__dirname, "public", "favicon.png")));
+/**
+ * TODO: Isso serve para quando o usuário mandar um informação pelo formulário a gente possa pegar
+ */
 app.use(bodyParser.urlencoded({ extended: false }));
+/**
+ * TODO: Habilita o uso de JSON nas rotas pelo clientes e ou na criação do que for necessário
+ */
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.render("inicio");
-});
+app.use("/", indexController);
+app.use("/", categoryController);
+app.use("*", error404Controller);
 
 const port = 8080;
 app.listen(port, () => {

@@ -1,0 +1,19 @@
+<head>
+  <title><%= title %></title>
+</head>
+<div>
+  <h2>Lista de Categoria</h2>
+  <a href="/admin/category">Ver</a>
+</div>
+<div class="">
+  <h2>Cadastrar Categoria</h2>
+  <form action="/admin/category/save" method="post">
+    <input
+      type="text"
+      name="title"
+      id=""
+      placeholder="Digite o nome da categoria"
+    />
+    <input type="submit" value="Criar" />
+  </form>
+</div>

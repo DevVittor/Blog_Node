@@ -1,0 +1,15 @@
+<head>
+  <title><%= title %></title>
+</head>
+<div>
+  <h2>Criar Categoria</h2>
+  <a href="/admin/category/new">Criar</a>
+</div>
+<div class="">
+  <% categories.forEach(listCategory=>{%>
+  <span>Id: <%= listCategory.id %></span>
+  <h1>Title: <%= listCategory.title %></h1>
+  <h3>Slug: <%= listCategory.slug %></h3>
+  <hr />
+  <% }) %>
+</div>
