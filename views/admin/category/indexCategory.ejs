@@ -3,13 +3,31 @@
 </head>
 <div>
   <h2>Criar Categoria</h2>
-  <a href="/admin/category/new">Criar</a>
+  <a href="/admin/category/new">Criar Categoria</a>
+</div>
+<div class="">
+  <h2>Criar Artigo</h2>
+  <a href="/admin/article/new">Criar Artigo</a>
 </div>
 <div class="">
   <% categories.forEach(listCategory=>{%>
   <span>Id: <%= listCategory.id %></span>
   <h1>Title: <%= listCategory.title %></h1>
   <h3>Slug: <%= listCategory.slug %></h3>
+
+  <div class="">
+    <form
+      action="/category/delete"
+      method="post"
+      onsubmit="OkDelete(event,this)"
+    >
+      <input type="hidden" name="id" value="<%= listCategory.id %>" />
+      <button>Deletar</button>
+    </form>
+    <a href="/admin/category/edit/<%=listCategory.id%>">Editar</a>
+  </div>
+
   <hr />
   <% }) %>
 </div>
+<script src="/js/checkDelete.js"></script>

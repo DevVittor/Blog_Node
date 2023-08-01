@@ -1,0 +1,21 @@
+<head>
+  <title><%= categoria.title %></title>
+</head>
+<div>
+  <h2>Editar de Categoria</h2>
+  <a href="/admin/category">Ver</a>
+</div>
+<div class="">
+  <h2>Editar Categoria</h2>
+  <form action="/admin/category/update" method="post">
+    <input
+      type="text"
+      name="title"
+      value="<%= categoria.title %>"
+      id=""
+      placeholder="Digite o nome da categoria"
+    />
+    <input type="hidden" name="id" value="<%= categoria.id %>" />
+    <input type="submit" value="Salvar Alterações" />
+  </form>
+</div>

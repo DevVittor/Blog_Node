@@ -26,6 +26,12 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 app.use(favicon(path.join(__dirname, "public", "favicon.png")));
+
+app.use(
+  "/tinymce",
+  express.static(path.join(__dirname, "node_modules", "tinymce"))
+);
+
 /**
  * TODO: Isso serve para quando o usuário mandar um informação pelo formulário a gente possa pegar
  */
